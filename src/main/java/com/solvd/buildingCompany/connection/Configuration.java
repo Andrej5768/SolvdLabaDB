@@ -24,7 +24,7 @@ public class Configuration {
 
     private void init() {
         DB_USER_NAME = "root";
-        DB_PASSWORD = "Qq123456";
+        DB_PASSWORD = "";
         DB_URL = "jdbc:mysql://localhost:3306/building_company";
         DB_DRIVER = "com.mysql.cj.jdbc.Driver";
         DB_MAX_CONNECTIONS = 5;
