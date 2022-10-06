@@ -2,7 +2,7 @@ package com.solvd.buildingCompany.persistence.model;
 
 public class Address {
 
-    private Long id;
+    private int id;
 
     private String citi;
 
@@ -15,11 +15,11 @@ public class Address {
     public Address() {
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -53,5 +53,14 @@ public class Address {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "citi='" + citi + '\'' +
+                ", street='" + street + '\'' +
+                ", building='" + building + '\'' +
+                '}';
     }
 }

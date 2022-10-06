@@ -1,14 +1,27 @@
 package com.solvd.buildingCompany.persistence.dao;
 
-import com.solvd.buildingCompany.persistence.model.Project;
-
 import java.util.List;
+
+import com.solvd.buildingCompany.persistence.model.Project;
 
 public interface IProjectRepository {
 
-    Project findByName(String name);
+    Project getProjectById(long id);
 
-    List<Project> findAll();
+    Project getProjectByCreatorId(long id);
 
-    Project findById(long id);
+    Project getProjectByAssignedId(long id);
+
+    Project getProjectByClientId(long id);
+
+    Project getProjectByName(String name);
+
+    List<Project> getAllProject();
+
+    void save(Project project);
+
+    void update(Project project);
+
+    void delete(Project project);
+
 }

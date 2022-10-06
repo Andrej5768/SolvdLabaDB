@@ -4,5 +4,5 @@ import com.solvd.buildingCompany.persistence.model.Department;
 
 public interface IDeptRepository {
 
-    Department findById(long id);
+    Department findDeptById(long id);
 }

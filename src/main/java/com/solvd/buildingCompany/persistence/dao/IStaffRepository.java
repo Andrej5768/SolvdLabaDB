@@ -1,18 +1,18 @@
 package com.solvd.buildingCompany.persistence.dao;
 
-import com.solvd.buildingCompany.persistence.model.Staff;
-
 import java.util.List;
+
+import com.solvd.buildingCompany.persistence.model.Staff;
 
 public interface IStaffRepository {
 
     Staff getStaffById(long id);
 
-    List<Staff> getAll();
+    List<Staff> getAllStaff();
 
     void save(Staff staff);
 
-    void update(Staff staff, String[] params);
+    void update(Staff staff);
 
     void delete(Staff staff);
 }

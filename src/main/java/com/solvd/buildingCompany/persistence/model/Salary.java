@@ -1,9 +1,8 @@
 package com.solvd.buildingCompany.persistence.model;
 
 import java.util.Collection;
-import java.util.Date;
 
-public class Salaries {
+public class Salary {
 
     private Long id;
 
@@ -11,7 +10,7 @@ public class Salaries {
 
     private Double salary;
 
-    public Salaries() {
+    public Salary() {
     }
 
     public Long getId() {

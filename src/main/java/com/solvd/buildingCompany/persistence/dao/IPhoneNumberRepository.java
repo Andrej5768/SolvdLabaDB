@@ -4,8 +4,6 @@ import com.solvd.buildingCompany.persistence.model.PhoneNumber;
 
 public interface IPhoneNumberRepository {
 
-    PhoneNumber findStaffPhoneNumber(String phoneNumber);
-
-    PhoneNumber findById(long id);
+    PhoneNumber getPhoneNumberById(long id);
 }
 

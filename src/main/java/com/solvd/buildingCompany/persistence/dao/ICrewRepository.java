@@ -4,5 +4,5 @@ import com.solvd.buildingCompany.persistence.model.Crew;
 
 public interface ICrewRepository {
 
-    Crew findById(long id);
+    Crew getCrewById(long id);
 }

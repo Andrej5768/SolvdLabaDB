@@ -9,9 +9,15 @@ public class Project {
 
     private String name;
 
+    private Long assignedTo;
+
+    private Long createBy;
+
     private Date createDate;
 
     private Date endDate;
+
+    private Long clientId;
 
     public Project() {
     }
@@ -32,6 +38,22 @@ public class Project {
         this.name = name;
     }
 
+    public Long getAssignedTo() {
+        return assignedTo;
+    }
+
+    public void setAssignedTo(Long assignedTo) {
+        this.assignedTo = assignedTo;
+    }
+
+    public Long getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(Long createBy) {
+        this.createBy = createBy;
+    }
+
     public Date getCreateDate() {
         return createDate;
     }
@@ -48,6 +70,14 @@ public class Project {
         this.endDate = endDate;
     }
 
+    public Long getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,13 +85,12 @@ public class Project {
         Project project = (Project) o;
         return Objects.equals(id, project.id)
                 && Objects.equals(name, project.name)
-                && Objects.equals(createDate, project.createDate)
-                && Objects.equals(endDate, project.endDate);
+                && Objects.equals(createDate, project.createDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, createDate, endDate);
+        return Objects.hash(id, name, createDate);
     }
 
     @Override
@@ -69,8 +98,11 @@ public class Project {
         return "Project{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", assignedTo=" + assignedTo +
+                ", createBy=" + createBy +
                 ", createDate=" + createDate +
                 ", endDate=" + endDate +
+                ", clientId=" + clientId +
                 '}';
     }
 }
