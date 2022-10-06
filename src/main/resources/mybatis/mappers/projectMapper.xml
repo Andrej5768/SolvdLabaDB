@@ -1,0 +1,62 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.buildingCompany.persistence.dao.IProjectRepository">
+    <resultMap id="Project" type="Project" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="assignedTo" column="assigned_to"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createDate" column="create_date"/>
+        <result property="endDate" column="end_date"/>
+        <result property="clientId" column="client_id"/>
+    </resultMap>
+    <select id="getProjectById" parameterType="java.lang.Long" resultType="Project">
+        SELECT *
+        FROM projects
+        WHERE id = #{id};
+    </select>
+
+    <select id="getProjectByCreatorId" parameterType="java.lang.Long" resultMap="Project">
+        select *
+        from projects
+        WHERE create_by = #{id};
+    </select>
+
+    <select id="getProjectByAssignedId" parameterType="java.lang.Long" resultMap="Project">
+        select *
+        from projects
+        WHERE assigned_to = #{id};
+    </select>
+
+    <select id="getProjectByClientId" parameterType="java.lang.Long" resultMap="Project">
+        select *
+        from projects
+        WHERE client_id = #{id};
+    </select>
+
+    <select id="getAllProject" resultMap="Project">
+        select *
+        from projects;
+    </select>
+
+    <insert id="save" parameterType="Project">
+        INSERT INTO projects (name, assigned_to, create_by, create_date, client_id)
+        values (#{name}, #{assignedTo}, #{createBy}, #{createDate}, #{clientId});
+    </insert>
+
+    <update id="update" parameterType="Project">
+        UPDATE projects
+        SET name        = #{name},
+            assigned_to = #{assignedTo},
+            create_by   = #{createBy},
+            create_date = #{createDate},
+            end_date    = #{endDate},
+            client_id   = #{clientId}
+        WHERE id = #{id};
+    </update>
+
+    <delete id="delete" parameterType="Project">
+        DELETE
+        FROM projects
+        WHERE id = #{id};
+    </delete>
+</mapper>

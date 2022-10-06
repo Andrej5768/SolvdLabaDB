@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="mybatis/db.properties">
+    </properties>
+    <settings> <!--http://mybatis.github.io/mybatis-3/configuration.html#settings-->
+        <!-- changes from the defaults -->
+        <setting name="lazyLoadingEnabled" value="true" />
+        <!-- Mybatis logging -->
+        <setting name="logImpl" value="SLF4J"/>
+    </settings>
+    <typeAliases>
+        <typeAlias alias="Address" type="com.solvd.buildingCompany.persistence.model.Address"/>
+        <typeAlias alias="Bills" type="com.solvd.buildingCompany.persistence.model.Bills"/>
+        <typeAlias alias="Client" type="com.solvd.buildingCompany.persistence.model.Client"/>
+        <typeAlias alias="Crew" type="com.solvd.buildingCompany.persistence.model.Crew"/>
+        <typeAlias alias="Department" type="com.solvd.buildingCompany.persistence.model.Department"/>
+        <typeAlias alias="Machine" type="com.solvd.buildingCompany.persistence.model.Machine"/>
+        <typeAlias alias="PhoneNumber" type="com.solvd.buildingCompany.persistence.model.PhoneNumber"/>
+        <typeAlias alias="Position" type="com.solvd.buildingCompany.persistence.model.Position"/>
+        <typeAlias alias="Project" type="com.solvd.buildingCompany.persistence.model.Project"/>
+        <typeAlias alias="Salary" type="com.solvd.buildingCompany.persistence.model.Salary"/>
+        <typeAlias alias="Staff" type="com.solvd.buildingCompany.persistence.model.Staff"/>
+    </typeAliases>
+    <environments default="development"><!--connect to DB-->
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mybatis/mappers/addressMapper.xml"/>
+        <mapper resource="mybatis/mappers/billsMapper.xml"/>
+        <mapper resource="mybatis/mappers/clientMapper.xml"/>
+        <mapper resource="mybatis/mappers/crewMapper.xml"/>
+        <mapper resource="mybatis/mappers/departmentMapper.xml"/>
+        <mapper resource="mybatis/mappers/machineMapper.xml"/>
+        <mapper resource="mybatis/mappers/phoneNumberMapper.xml"/>
+        <mapper resource="mybatis/mappers/positionMapper.xml"/>
+        <mapper resource="mybatis/mappers/projectMapper.xml"/>
+        <mapper resource="mybatis/mappers/salaryMapper.xml"/>
+        <mapper resource="mybatis/mappers/staffMapper.xml"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,20 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.buildingCompany.persistence.dao.IClientRepository">
+    <resultMap id="client" type="Bills" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="bill_date"/>
+        <result property="phoneNumber" column="from_date"/>
+        <result property="companyName" column="to_date"/>
+        <collection property="projectsId" column="id" javaType="Collection" ofType="Long"
+                    select="com.solvd.buildingCompany.persistence.dao.IProjectRepository.getBillById.getClientId"
+                    fetchType="eager"/>
+    </resultMap>
+    <select id="getClientById" parameterType="java.lang.Long" resultType="Client">
+        SELECT * FROM clients WHERE id = #{id};
+    </select>
+
+    <select id="getAllClients" resultMap="client">
+        select * from clients;
+    </select>
+</mapper>

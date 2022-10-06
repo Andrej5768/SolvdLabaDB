@@ -1,0 +1,8 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.buildingCompany.persistence.dao.IPositionRepository">
+    <select id="getPositionById" parameterType="java.lang.Long" resultType="Position">
+        SELECT *
+        FROM staff_position
+        WHERE pos_id = #{id};
+    </select>
+</mapper>

@@ -1,0 +1,17 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.buildingCompany.persistence.dao.IAddressRepository">
+    <resultMap id="addresses" type="com.solvd.buildingCompany.persistence.model.Address" autoMapping="false">
+        <id property="id" column="id"/>
+        <result property="citi" column="citi"/>
+        <result property="street" column="street"/>
+        <result property="building" column="building"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+    <select id="getAddressById" parameterType="java.lang.Integer" resultType="com.solvd.buildingCompany.persistence.model.Address">
+        SELECT * FROM address WHERE id = #{id}
+    </select>
+
+    <select id="getAllAddress" resultMap="addresses">
+        select * from address
+    </select>
+</mapper>

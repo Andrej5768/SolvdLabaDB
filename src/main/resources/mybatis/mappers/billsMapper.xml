@@ -1,0 +1,19 @@
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.buildingCompany.persistence.dao.IBillsRepository">
+    <resultMap id="bills" type="Bills" autoMapping="false">
+        <id property="id" column="bill_id"/>
+        <result property="amount" column="amount"/>
+        <result property="billDate" column="bill_date"/>
+        <result property="fromDate" column="from_date"/>
+        <result property="toDate" column="to_date"/>
+        <result property="paidDate" column="paid_date"/>
+        <result property="projectId" column="project_id"/>
+    </resultMap>
+    <select id="getBillById" parameterType="java.lang.Long" resultType="Bills">
+        SELECT * FROM bills WHERE bill_id = #{id};
+    </select>
+
+    <select id="getAllBills" resultMap="bills">
+        select * from bills;
+    </select>
+</mapper>
