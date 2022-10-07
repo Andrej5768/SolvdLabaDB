@@ -29,7 +29,7 @@
         from staff
     </select>
 
-    <insert id="save" parameterType="Staff">
+    <insert id="save" parameterType="Staff" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO staff (first_name, last_name, start_date, dept_id, pos_id, address_id, phone_number_id, salaries_id)
         VALUES (#{firstName}, #{lastName}, #{startDate}, #{deptId}, #{posId}, #{addressId}, #{phoneNumberId},
                 #{salariesId});

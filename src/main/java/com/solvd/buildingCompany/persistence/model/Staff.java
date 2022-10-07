@@ -78,6 +78,7 @@ public class Staff {
         this.firstName = firstName;
         this.lastName = lastName;
         this.startDate = startDate;
+        this.endDate = null;
         this.deptId = deptId;
         this.posId = posId;
         this.addressId = addressId;
@@ -181,6 +182,14 @@ public class Staff {
 
     public void setSalariesId(Long salariesId) {
         this.salariesId = salariesId;
+    }
+
+    public String getStaffInfo() {
+        return StaffService.getStaffInfo(this);
+    }
+
+    public void setStaffInfo(String str) {
+        //code
     }
 
     @Override

@@ -6,6 +6,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import jakarta.xml.bind.JAXBException;
@@ -19,6 +24,8 @@ import com.solvd.buildingCompany.service.StaffService;
 import com.solvd.buildingCompany.util.json.StaffJson;
 import com.solvd.buildingCompany.util.xml.StaffXml;
 
+import javax.swing.text.DateFormatter;
+
 public class App {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
@@ -30,6 +37,7 @@ public class App {
         File jsonOutPath = new File("src/main/resources/json/output.json");
 
         //Connection Pool
+        LOGGER.info("\nConnection Pool");
         try (Connection connection = DataSource.getConnection(); Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM building_company.staff");
             while (resultSet.next()) {
@@ -50,10 +58,11 @@ public class App {
         }
 
         //Project service example MyBatis
-        List<Project> projectList = new ProjectService().getAllProject();
+//        List<Project> projectList = new ProjectService().getAllProject();
 
         //Staff service example MyBatis
-        Staff petro = new Staff("Petro", "Petrenko", new java.sql.Date(2022, 10, 24), 3L, 1L, 2L, 2L, 3L);
+        LOGGER.info("\nMyBatis");
+        Staff petro = new Staff(8L,"Petro", "Petrenko", new Date(1663275600000L), 3L, 1L, 2L, 2L, 3L);
         new StaffService().save(petro);
         List<Staff> staffList0 = new StaffService().getAllStaff();
         for (Staff staff : staffList0) {
@@ -63,6 +72,7 @@ public class App {
         }
 
         //JAXB write file
+        LOGGER.info("\nJAXB write file");
         List<Staff> staffList = new StaffService().getAllStaff();
         try {
             StaffXml.marshalList(staffList, String.valueOf(xmlInPath));
@@ -71,6 +81,7 @@ public class App {
         }
 
         //JAXB read file
+        LOGGER.info("\nJAXB read file");
         try {
             List<Staff> staffList2 = StaffXml.unmarshalList(String.valueOf(xmlInPath));
             for (Staff staff : staffList2) {
@@ -81,11 +92,13 @@ public class App {
         }
 
         //Jackson write file
+        LOGGER.info("\nJackson write file");
         List<Staff> staffList3 = new StaffService().getAllStaff();
-        StaffJson.marshal(staffList3, jsonInPath.toString());
+        StaffJson.marshal(staffList3, jsonOutPath.toString());
 
         //Jackson read file
-        List<Staff> staffList2 = StaffJson.unmarshalList(jsonInPath.toString());
+        LOGGER.info("\nJackson read file");
+        List<Staff> staffList2 = StaffJson.unmarshalList(jsonOutPath.toString());
         for (Staff staff : staffList2) {
             System.out.println(staff);
         }
