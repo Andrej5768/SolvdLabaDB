@@ -1,6 +1,6 @@
 # SolvdLABA Homework
 
-Implementing database queries using JDBC, MyBatis. 
+Realization database queries using JDBC, MyBatis. 
 
 Parsing Objects to JSON and XML with JAXB, Jackson
 
